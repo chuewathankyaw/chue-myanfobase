@@ -11,7 +11,7 @@ export default function UploadPost() {
 
 
   const upLoad = () => {
-    Axios.post("https://chue-myanfobase.herokuapp.com//upload", {
+    Axios.post("https://chue-myanfobase.herokuapp.com/upload", {
       title: title,
       desc: desc,
     }).then((response) => {
@@ -25,7 +25,7 @@ export default function UploadPost() {
 
   const updateNews = (id) => {
     const newDesc = prompt("Enter new Description!");
-    Axios.put("https://chue-myanfobase.herokuapp.com//update", {
+    Axios.put("https://chue-myanfobase.herokuapp.com/update", {
       newDesc: newDesc,
       id: id,
     }).then(() => {
@@ -40,7 +40,7 @@ export default function UploadPost() {
   }
 
   const deleteNews = (id) => {
-    Axios.delete(`https://chue-myanfobase.herokuapp.com//delete/${id}`).then(
+    Axios.delete(`https://chue-myanfobase.herokuapp.com/delete/${id}`).then(
       () => {
         setListOfNews(
           listOfNews.filter((val) => {
@@ -52,7 +52,7 @@ export default function UploadPost() {
   };
 
   useEffect(() => {
-    Axios.get("https://chue-myanfobase.herokuapp.com//read")
+    Axios.get("https://chue-myanfobase.herokuapp.com/read")
       .then((response) => {
         setListOfNews(response.data);
       })
