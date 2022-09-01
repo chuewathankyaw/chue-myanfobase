@@ -10,6 +10,9 @@ export default function UploadPost() {
   const [listOfNews, setListOfNews] = useState([]);
 
 
+
+ 
+
   const upLoad = () => {
     Axios.post("https://chue-myanfobase.herokuapp.com/upload", {
       title: title,
@@ -21,6 +24,8 @@ export default function UploadPost() {
       ]);
     });
       
+    
+  
   };
 
   const updateNews = (id) => {
@@ -60,9 +65,11 @@ export default function UploadPost() {
         console.log("ERR");
       });
   }, []);
+
+
   return (
     <>
-      <form>
+      <form action="/upload" method="POST" encType="multipart/form-data">
         <div className="titleDiv">
           <h3>Title:</h3>
           <textarea
@@ -92,8 +99,12 @@ export default function UploadPost() {
         </div>
         <br />
         <div className="imgDiv">
-          <h3>Upload Image:</h3>
-          <input type="file" multiple />
+          <label htmlFor="file"> choose image</label>
+          <input
+            type="file"
+            fileName="img"
+            
+          ></input>
         </div>
       </form>
       <button className="postButton" onClick={upLoad}>
@@ -106,6 +117,7 @@ export default function UploadPost() {
             <div className="news-addpost">
               <h4>Title: {val.title}</h4>
               <p>Description: {val.desc}</p>
+              <p>img: {}</p>
             </div>
 
             <button
@@ -130,3 +142,4 @@ export default function UploadPost() {
     </>
   );
 }
+// _id: response.data._id, 
